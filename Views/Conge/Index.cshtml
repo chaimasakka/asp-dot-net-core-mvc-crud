@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Asp.netCoreMvcCrud.Models.Conge
+>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Congés</h4>
+
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.Nom)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.dateDebut)
+            </th>
+   
+            <th>
+                @Html.DisplayNameFor(model => model.dateFin)
+            </th>
+
+
+            <th>
+                <a asp-action="AddorEdit" class="btn btn-success">Ajouter</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Nom)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.dateDebut)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.dateFin)
+            </td>
+           
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@item.CongeId"><i class="fa fa-marker fa-lg"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.CongeId" class="text-danger ml-1" onclick="return confirm('Supprimer Element?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
